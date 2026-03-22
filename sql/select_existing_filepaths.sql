@@ -1,0 +1,1 @@
+SELECT filepath FROM documents;

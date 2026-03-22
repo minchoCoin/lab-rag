@@ -1,0 +1,5 @@
+psycopg[binary]
+pgvector
+sentence-transformers
+torch
+tqdm
