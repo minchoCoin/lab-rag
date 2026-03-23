@@ -165,7 +165,7 @@ python pdftotext/weeklysplit.py
 python ingest.py
 ```
 
-## run local llm and proxy server
+## run local llm and proxy server (local LLM method 1)
 We adopt llama.cpp and gpt-oss-120b-Q4_K_M.gguf for local llm(In my case, gpt-oss-120b running on vllm consumed the ~90GB RAM, while gpt-oss-120b running on llama.cpp consumed the ~78GB RAM.)
 
 Thanks to [ZengboJamesWang/Qwen3.5-35B-A3B-openclaw-dgx-spark](https://github.com/ZengboJamesWang/Qwen3.5-35B-A3B-openclaw-dgx-spark), we can connect llama.cpp and openclaw. 
@@ -212,6 +212,18 @@ llama-server \
 you can download the llama-proxy.py on [this link](https://github.com/ZengboJamesWang/Qwen3.5-35B-A3B-openclaw-dgx-spark/blob/master/proxy/llama-proxy.py)
 ```
 python llama-proxy.py
+```
+
+## run local llm(method 2)
+
+thanks to [https://github.com/christopherowen/spark-vllm-mxfp4-docker/](https://github.com/christopherowen/spark-vllm-mxfp4-docker/), we can run gpt-oss with MXFP4 on DGX-SPARK.
+
+```bash
+git clone https://github.com/christopherowen/spark-vllm-mxfp4-docker.git
+cd spark-vllm-mxfp4-docker
+docker build -t vllm-mxfp4-spark .
+hf download openai/gpt-oss-120b
+docker compose up -d
 ```
 
 ## download and run openclaw
